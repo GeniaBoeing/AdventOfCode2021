@@ -20,6 +20,22 @@ for i in range(0, len(direction)):
     else:
         print('uppsie : ', direction[i])
 
-print('multiplying depth with horizontal position: ', x*y)
+print('Part 1: multiplying depth with horizontal position: ', x*y)
 
+# part 2:
+x = 0
+y = 0
+aim = 0
+
+
+for i in range(0, len(direction)):
+    if direction[i] == 'forward':
+        x += magnitude[i]
+        y += aim * magnitude[i]
+    elif direction[i] == 'down':
+        aim += magnitude[i]
+    elif direction[i] == 'up':
+        aim -= magnitude[i]
+
+print('Part 2: multiplying depth with horizontal position: ', x*y)
 
