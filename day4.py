@@ -55,13 +55,11 @@ for num in winning_nr:
         end = beginning + board_size
         score = 0
         for line in range(beginning, end):
-            if result[0] == 0:
-                if line != result[1]:
-                    score += sum(bingo_boards[line])
-            if result[0] == 1:
-                for i in range(0, board_size):
-                    if i != result[1]:
-                        print(bingo_boards[line])
-                        score += bingo_boards[line][i]
-        print(score * num)
+            score += sum(bingo_boards[line])
+        
+        for i in range(0, len(chosen_rows)): 
+            if chosen_rows[i] >= beginning and chosen_rows[i] < end:
+                score -= bingo_boards[chosen_rows[i]][chosen_columns[i]]
+
+        print('winning score : ', score * num, '    winning nr: ', num)
         break
