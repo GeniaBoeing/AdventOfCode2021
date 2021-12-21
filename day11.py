@@ -22,7 +22,7 @@ def propagate_light(board, y, x):
     return board
                 
 
-max_steps = 100
+max_steps = 500
 max_x = len(octopussies[0])
 max_y = len(octopussies)
 flash_counter = 0
@@ -43,11 +43,14 @@ for step in range(0, max_steps):
     for i in range(0, len(activated_octos)):
         octopussies = propagate_light(octopussies, activated_octos[i][0], activated_octos[i][1])
 
-
+    flashes_step = 0
     #count flashes and set to 0 
     for i in range(0, max_y):
         for j in range(0, max_x):
             if octopussies[i][j] > 9:
+                flashes_step += 1
                 flash_counter += 1
                 octopussies[i][j] = 0
     print('step ', step, 'flash_counter ', flash_counter)
+    if flashes_step == max_x * max_y:
+        print('step ', step + 1, ' all the octos are flashing')
