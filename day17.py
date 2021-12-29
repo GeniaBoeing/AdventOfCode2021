@@ -1,4 +1,3 @@
-input = 'target area: x=20..30, y=-10..-5'
 xmin = 288
 xmax = 330
 ymin = -96
@@ -28,17 +27,20 @@ def is_past_target(x,y):
 v_x_max = xmax
 v_y_max = abs(ymin)
 max_height = 0
-max_v_x = 0
-max_v_y = 0
-for i in range(0, v_x_max):
-    for j in range(-v_y_max, v_y_max):
+counter = 0
+for start_i in range(0, v_x_max + 1):
+    for start_j in range(-v_y_max, v_y_max + 1):
         x = 0
         y = 0 
         tmp_height = 0       
+        i = start_i 
+        j = start_j
         while(not (is_in_target(x, y) or is_past_target(x, y))):
             x, y, i, j = step(x, y, i, j)
             if y > tmp_height: tmp_height = y
-        if is_in_target: 
+        if is_in_target(x, y): 
+            counter += 1
             if tmp_height > max_height: max_height = tmp_height
-
 print('max height   ', max_height)
+print('nr distinct starting v   :', counter)
+
