@@ -41,7 +41,7 @@ for step in range(0, max_steps):
                 activated_octos.append([i,j])
 
     for i in range(0, len(activated_octos)):
-        octopuses = propagate_light(octopussies, activated_octos[i][0], activated_octos[i][1])
+        octopuses = propagate_light(octopuses, activated_octos[i][0], activated_octos[i][1])
 
     flashes_step = 0
     #count flashes and set to 0 
